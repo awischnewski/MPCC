@@ -1,3 +1,5 @@
 CMakeFiles/
 External/
 PythonWrapper/venv/
+PythonWrapper/build/
+PythonWrapper/MPCCWrapper.cpp
