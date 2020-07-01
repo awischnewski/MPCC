@@ -22,5 +22,5 @@ class MPCCWrapperClass {
       MPCCWrapperClass(std::string paramFile);
       ~MPCCWrapperClass();
 
-      void calcMPC(double* state_meas, double* input_calc);
+      double* calcMPC(double* state_meas);
 };

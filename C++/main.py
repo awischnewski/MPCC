@@ -10,11 +10,18 @@ mpc = MPCCWrapper("Params/config.json")
 veh = PassengerVehicle()
 # set initial pose
 veh.set_VehicleStartPoint(np.array([-33.46, 43.55, -2.35, 1], dtype='double'))
+
+# get it rollin
+for i in range(200):
+    veh.set_DriveForce(2000)
+    veh.set_SteeringAngle(0)
+    veh.step()
+
 # current vehicle inputs
-DriveForce_N = 0
+DriveForce_kN = 0
 SteeringAngle_rad = 0
 
-for i in range(1000):
+for i in range(300):
     print('Do iteration number ' + str(i))
     # get current state
     veh_state = np.array([veh.get_x_m(),
@@ -24,17 +31,22 @@ for i in range(1000):
                          veh.get_vy_mps(),
                          veh.get_dPsi_radps(),
                          0, # s is recalculated anyway
-                         DriveForce_N,
+                         DriveForce_kN,
                          SteeringAngle_rad,
                          veh.get_vx_mps()])
 
+    print('x_m: {:6.2f} | y_m: {:6.2f} | v_mps: {:6.2f}'.format(veh.get_x_m(), veh.get_y_m(), veh.get_vx_mps()))
+
     # calculate MPC
     inputs = mpc.calcMPC(veh_state)
-    DriveForce_N = DriveForce_N + inputs[0]
-    SteeringAngle_rad = SteeringAngle_rad + inputs[1]
+    print('Solution to the MPC problem: ' + str(inputs))
+    print('')
+    print('')
+    DriveForce_kN = DriveForce_kN + 0.02*inputs[0]
+    SteeringAngle_rad = SteeringAngle_rad + 0.02*inputs[1]
 
     # apply inputs
-    veh.set_DriveForce(DriveForce_N)
+    veh.set_DriveForce(DriveForce_kN*1000)
     veh.set_SteeringAngle(SteeringAngle_rad)
 
     # simulate 20ms
