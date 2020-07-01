@@ -2,6 +2,7 @@ from PassengerVehicle import PassengerVehicle
 from MPCC import MPCCWrapper
 
 import numpy as np
+import pickle
 
 # initiale controller
 mpc = MPCCWrapper("Params/config.json")
@@ -21,7 +22,14 @@ for i in range(200):
 DriveForce_kN = 0
 SteeringAngle_rad = 0
 
-for i in range(300):
+# preallocate log variables
+log_x_m = np.zeros(1000)
+log_y_m = np.zeros(1000)
+log_v_mps = np.zeros(1000)
+log_fx_kN = np.zeros(1000)
+log_delta_rad = np.zeros(1000)
+
+for i in range(1000):
     print('Do iteration number ' + str(i))
     # get current state
     veh_state = np.array([veh.get_x_m(),
@@ -49,6 +57,17 @@ for i in range(300):
     veh.set_DriveForce(DriveForce_kN*1000)
     veh.set_SteeringAngle(SteeringAngle_rad)
 
+    # log data
+    log_x_m[i] = veh.get_x_m()
+    log_y_m[i] = veh.get_y_m()
+    log_v_mps[i] = veh.get_vx_mps()
+    log_fx_kN[i] = DriveForce_kN
+    log_delta_rad[i] = SteeringAngle_rad
+
     # simulate 20ms
     for j in range(10):
         veh.step()
+
+# save results
+with open('MPCClogs.p', 'wb') as f:
+    pickle.dump([log_x_m, log_y_m, log_v_mps, log_fx_kN, log_delta_rad], f)
