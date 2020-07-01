@@ -18,9 +18,11 @@ using namespace mpcc;
 class MPCCWrapperClass {
     private:
       MPC* mpc;
+      std::array<OptVariables,N+1> mpc_horizon;
     public:
       MPCCWrapperClass(std::string paramFile);
       ~MPCCWrapperClass();
 
       double* calcMPC(double* state_meas);
+      double* getPrediction(int idx);
 };
