@@ -3,7 +3,8 @@
 MPCCWrapperClass::MPCCWrapperClass(std::string paramFile)
 {
     // load parameter files from json
-    std::ifstream iConfig("Params/config.json");
+    std::ifstream iConfig(paramFile);
+
     json jsonConfig;
     iConfig >> jsonConfig;
 

@@ -3,3 +3,5 @@ External/
 PythonWrapper/venv/
 PythonWrapper/build/
 PythonWrapper/MPCCWrapper.cpp
+PythonWrapper/dist/
+PythonWrapper/mpcc.egg-info/
