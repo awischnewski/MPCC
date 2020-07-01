@@ -1,15 +1,15 @@
 
 {
-  "n_sqp": 2,
+  "n_sqp": 3,
   "n_reset": 5,
   "sqp_mixing" : 0.8,
   "n_sim": 600,
   "Ts": 0.02,
-  "v0": 0.2,
-  
+  "v0": 1,
+
   "model_path": "Params/model.json",
   "cost_path": "Params/cost.json",
   "bounds_path": "Params/bounds.json",
-  "track_path": "Params/track.json",
+  "track_path": "Params/track_scaled.json",
   "normalization_path": "Params/normalization.json"
 }
