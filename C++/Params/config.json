@@ -1,7 +1,7 @@
 
 {
-  "n_sqp": 3,
-  "n_reset": 5,
+  "n_sqp": 2,
+  "n_reset": 10,
   "sqp_mixing" : 0.7,
   "n_sim": 600,
   "Ts": 0.02,

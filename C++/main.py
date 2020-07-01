@@ -22,14 +22,21 @@ for i in range(200):
 DriveForce_kN = 0
 SteeringAngle_rad = 0
 
+# store guess for arc length coordinate
+s_guess = 0
+
 # preallocate log variables
-N_steps = 1000
+N_steps = 2000
 log_x_m = np.zeros(N_steps)
 log_y_m = np.zeros(N_steps)
-log_v_mps = np.zeros(N_steps)
+log_psi_rad = np.zeros(N_steps)
+log_vx_mps = np.zeros(N_steps)
+log_vy_mps = np.zeros(N_steps)
+log_dPsi_radps = np.zeros(N_steps)
 log_fx_kN = np.zeros(N_steps)
 log_delta_rad = np.zeros(N_steps)
 log_predictions = []
+log_solver_status = np.zeros(N_steps)
 
 for i in range(N_steps):
     print('Do iteration number ' + str(i))
@@ -40,7 +47,7 @@ for i in range(N_steps):
                          veh.get_vx_mps(),
                          veh.get_vy_mps(),
                          veh.get_dPsi_radps(),
-                         0, # s is recalculated anyway
+                         s_guess,
                          DriveForce_kN,
                          SteeringAngle_rad,
                          veh.get_vx_mps()])
@@ -62,10 +69,17 @@ for i in range(N_steps):
     # log data
     log_x_m[i] = veh.get_x_m()
     log_y_m[i] = veh.get_y_m()
-    log_v_mps[i] = veh.get_vx_mps()
+    log_psi_rad[i] = veh.get_psi_rad()
+    log_vx_mps[i] = veh.get_vx_mps()
+    log_vy_mps[i] = veh.get_vx_mps()
+    log_dPsi_radps[i] = veh.get_dPsi_radps()
     log_fx_kN[i] = DriveForce_kN
     log_delta_rad[i] = SteeringAngle_rad
-    log_predictions.append(mpc.getPrediction())
+    mpc_predictions = mpc.getPrediction()
+    log_predictions.append(mpc_predictions)
+
+    # update s based on corrected values
+    s_guess = mpc_predictions[6][0]
 
     # simulate 20ms
     for j in range(10):
@@ -73,4 +87,4 @@ for i in range(N_steps):
 
 # save results
 with open('MPCClogs.p', 'wb') as f:
-    pickle.dump([log_x_m, log_y_m, log_v_mps, log_fx_kN, log_delta_rad, log_predictions], f)
+    pickle.dump([log_x_m, log_y_m, log_psi_rad, log_vx_mps, log_vy_mps, log_dPsi_radps, log_fx_kN, log_delta_rad, log_predictions], f)

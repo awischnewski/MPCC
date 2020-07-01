@@ -258,7 +258,7 @@ std::array<OptVariables,N+1> HpipmInterface::Solve(int *status)
 
 //    int mode = 1;
     double mu0 = 1e2;
-    int iter_max = 30;
+    int iter_max = 100;
     double tol_stat = 1e-6;
     double tol_eq = 1e-6;
     double tol_ineq = 1e-6;

@@ -60,8 +60,8 @@ double* MPCCWrapperClass::calcMPC(double* state_meas)
 
 double* MPCCWrapperClass::getPrediction(int idx)
 {
-    double* prediction = new double[60];
-    for (int i = 0; i<60; i++)
+    double* prediction = new double[N];
+    for (int i = 0; i<N; i++)
     {
         if(idx == 0) {
           prediction[i] = mpc_horizon[i].xk.X;
@@ -69,8 +69,20 @@ double* MPCCWrapperClass::getPrediction(int idx)
         else if(idx == 1){
           prediction[i] = mpc_horizon[i].xk.Y;
         }
+        else if(idx == 2){
+          prediction[i] = mpc_horizon[i].xk.phi;
+        }
         else if(idx == 3){
           prediction[i] = mpc_horizon[i].xk.vx;
+        }
+        else if(idx == 4){
+          prediction[i] = mpc_horizon[i].xk.vy;
+        }
+        else if(idx == 5){
+          prediction[i] = mpc_horizon[i].xk.r;
+        }
+        else if(idx == 6){
+          prediction[i] = mpc_horizon[i].xk.s;
         }
         else if(idx == 7){
           prediction[i] = mpc_horizon[i].xk.D;
@@ -78,9 +90,12 @@ double* MPCCWrapperClass::getPrediction(int idx)
         else if(idx == 8){
           prediction[i] = mpc_horizon[i].xk.delta;
         }
+        else if(idx == 9){
+          prediction[i] = mpc_horizon[i].xk.vs;
+        }
         else
         {
-          prediction[i] = 0; 
+          prediction[i] = 0;
         }
     }
     return prediction;

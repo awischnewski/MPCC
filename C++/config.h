@@ -35,9 +35,9 @@ namespace mpcc{
 #define NPC 3 //number of polytopic constraints
 #define NS 3
 
-static constexpr int N = 60;
+static constexpr int N = 150;
 static constexpr double INF = 1E5;
-static constexpr int N_SPLINE = 5000;
+static constexpr int N_SPLINE = 40000;
 
 
 struct StateInputIndex{
