@@ -27,7 +27,7 @@ s_guess = 0
 sv_guess = veh.get_vx_mps()
 
 # preallocate log variables
-N_steps = 4000
+N_steps = 2000
 log_x_m = np.zeros(N_steps)
 log_y_m = np.zeros(N_steps)
 log_psi_rad = np.zeros(N_steps)
@@ -65,8 +65,8 @@ for i in range(N_steps):
     print('Solution to the MPC problem: ' + str(inputs))
     print('')
     print('')
-    DriveForce_kN = DriveForce_kN + 0.05*inputs[0]
-    SteeringAngle_rad = SteeringAngle_rad + 0.05*inputs[1]
+    DriveForce_kN = DriveForce_kN + 0.06*inputs[0]
+    SteeringAngle_rad = SteeringAngle_rad + 0.06*inputs[1]
 
     # apply inputs
     veh.set_DriveForce(DriveForce_kN*1000)
@@ -102,7 +102,7 @@ for i in range(N_steps):
     print('s_m predicted: {:6.2f} | sv_mps predicted: {:6.2f}'.format(s_guess, sv_guess))
 
     # simulate 20ms
-    for j in range(25):
+    for j in range(30):
         veh.step()
 
 # save results

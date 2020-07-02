@@ -27,9 +27,9 @@
   "R_in" : 10,
   "R_out" : 10,
 
-  "max_dist_proj": 5,
+  "max_dist_proj": 10,
 
-  "E_long" : 1.0,
+  "E_long" : 0.0,
   "E_eps" : 0.7,
 
   "maxAlpha" : 0.4,

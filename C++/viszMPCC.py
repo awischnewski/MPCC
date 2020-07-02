@@ -16,7 +16,7 @@ fig1, ax1 = plt.subplots()
 fig2, ax2 = plt.subplots(5, 2)
 
 # choose point where predictions are plotted
-idx = 370
+idx = 800
 
 ax1.plot(logs[0], logs[1])
 ax1.plot(track['X_i'], track['Y_i'], 'k')

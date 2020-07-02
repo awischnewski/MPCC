@@ -15,9 +15,9 @@
   "rDelta" : 2E-6,
   "rVs" : 1E-6,
 
-  "rdD" : 1E-3,
-  "rdDelta" : 1E-0,
-  "rdVs" : 1E-3,
+  "rdD" : 2E-3,
+  "rdDelta" : 2E-0,
+  "rdVs" : 2E-3,
 
   "qCNmult": 10,
   "qRNmult": 10,
