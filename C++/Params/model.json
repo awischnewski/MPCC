@@ -30,7 +30,7 @@
   "max_dist_proj": 10,
 
   "E_long" : 0.0,
-  "E_eps" : 0.7,
+  "E_eps" : 1.0,
 
   "maxAlpha" : 0.4,
 

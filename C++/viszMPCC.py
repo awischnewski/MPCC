@@ -16,7 +16,7 @@ fig1, ax1 = plt.subplots()
 fig2, ax2 = plt.subplots(5, 2)
 
 # choose point where predictions are plotted
-idx = 800
+idx = 1
 
 ax1.plot(logs[0], logs[1])
 ax1.plot(track['X_i'], track['Y_i'], 'k')
@@ -69,7 +69,7 @@ ax2[4][1].set_ylabel('alphaR in rad')
 ax2[4][1].grid()
 
 # plot predictions
-N_hor = 300
+N_hor = 200
 ax1.plot(logs[12][idx][0], logs[12][idx][1], 'r--')
 ax2[0][0].plot(range(idx, idx+N_hor), logs[12][idx][3])
 ax2[1][0].plot(range(idx, idx+N_hor), logs[12][idx][4])
