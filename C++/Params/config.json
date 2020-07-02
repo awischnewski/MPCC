@@ -2,9 +2,9 @@
 {
   "n_sqp": 2,
   "n_reset": 10,
-  "sqp_mixing" : 0.65,
+  "sqp_mixing" : 0.8,
   "n_sim": 600,
-  "Ts": 0.04,
+  "Ts": 0.05,
   "v0": 2,
 
   "model_path": "Params/model.json",

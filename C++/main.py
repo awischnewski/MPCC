@@ -13,7 +13,7 @@ veh = PassengerVehicle()
 veh.set_VehicleStartPoint(np.array([-53.2, 62.32, -2.35, 1], dtype='double'))
 
 # get it rollin
-for i in range(300):
+for i in range(400):
     veh.set_DriveForce(5000)
     veh.set_SteeringAngle(0)
     veh.step()
@@ -27,7 +27,7 @@ s_guess = 0
 sv_guess = veh.get_vx_mps()
 
 # preallocate log variables
-N_steps = 200
+N_steps = 4000
 log_x_m = np.zeros(N_steps)
 log_y_m = np.zeros(N_steps)
 log_psi_rad = np.zeros(N_steps)
@@ -65,8 +65,8 @@ for i in range(N_steps):
     print('Solution to the MPC problem: ' + str(inputs))
     print('')
     print('')
-    DriveForce_kN = DriveForce_kN + 0.04*inputs[0]
-    SteeringAngle_rad = SteeringAngle_rad + 0.04*inputs[1]
+    DriveForce_kN = DriveForce_kN + 0.05*inputs[0]
+    SteeringAngle_rad = SteeringAngle_rad + 0.05*inputs[1]
 
     # apply inputs
     veh.set_DriveForce(DriveForce_kN*1000)
@@ -102,7 +102,7 @@ for i in range(N_steps):
     print('s_m predicted: {:6.2f} | sv_mps predicted: {:6.2f}'.format(s_guess, sv_guess))
 
     # simulate 20ms
-    for j in range(20):
+    for j in range(25):
         veh.step()
 
 # save results
