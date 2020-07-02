@@ -17,6 +17,7 @@ MPCCWrapperClass::MPCCWrapperClass(std::string paramFile)
     // parse track data
     Track track = Track(json_paths.track_path);
     TrackPos track_xy = track.getTrack();
+    track_.gen2DSpline(track_xy.X, track_xy.Y);
 
     // initialize mpc
     mpc = new MPC(jsonConfig["n_sqp"], jsonConfig["n_reset"], jsonConfig["sqp_mixing"], jsonConfig["Ts"], json_paths);
@@ -57,6 +58,21 @@ double* MPCCWrapperClass::calcMPC(double* state_meas)
     input_calc[2] = mpc_sol.u0.dVs;
     return input_calc;
 }
+
+double* MPCCWrapperClass::getInterpolatedTrack(int idx)
+{
+    double* track = new double[400];
+    double s_trial = 0;
+    Eigen::Vector2d s_path;
+    for (int i = 0; i < 400; i++)
+    {
+      s_path = track_.getPostion(s_trial);
+      track[i] = s_path(idx);
+      s_trial += 0.5;
+    }
+    return track;
+}
+
 
 double* MPCCWrapperClass::getPrediction(int idx)
 {

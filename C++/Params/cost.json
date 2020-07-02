@@ -1,23 +1,23 @@
 
 {
-  "qC" : 0.1,
-  "qL" : 100.0,
-  "qVs" : 0.02,
+  "qC" : 1E-5,
+  "qL" : 500.0,
+  "qVs" : 0.3,
 
-  "qMu": 0.001,
+  "qMu": 0.0002,
 
   "qR" : 1E-5,
 
-  "qBeta" : 1E-2,
+  "qBeta" : 1E-3,
   "betaKin": 0,
 
-  "rD" : 1E-5,
-  "rDelta" : 1E-5,
-  "rVs" : 1E-6,
+  "rD" : 1E-7,
+  "rDelta" : 1E-7,
+  "rVs" : 1E-7,
 
-  "rdD" : 1E-4,
+  "rdD" : 5E-4,
   "rdDelta" : 5E-3,
-  "rdVs" : 1E-5,
+  "rdVs" : 5E-5,
 
   "qCNmult": 10,
   "qRNmult": 10,

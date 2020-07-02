@@ -6,13 +6,13 @@
   "Cr0" : 0,
   "Cr2" : 1.4,
 
-  "Br" 	: 5,
-  "Cr" 	: 2.35,
-  "Dr" 	: 10000,
+  "Br" 	: 3,
+  "Cr" 	: 2,
+  "Dr" 	: 15000,
 
-  "Bf"	: 5,
-  "Cf" 	: 2.35,
-  "Df" 	: 9000,
+  "Bf"	: 3,
+  "Cf" 	: 2,
+  "Df" 	: 14000,
 
   "m" 	: 1300,
   "Iz" 	: 1200,
@@ -24,18 +24,18 @@
 
   "g"   : 9.81,
 
-  "R_in" : 5,
-  "R_out" : 5,
+  "R_in" : 7,
+  "R_out" : 7,
 
-  "max_dist_proj": 3,
+  "max_dist_proj": 5,
 
-  "E_long" : 0.9,
-  "E_eps" : 0.95,
+  "E_long" : 1.0,
+  "E_eps" : 0.7,
 
-  "maxAlpha" : 0.6,
+  "maxAlpha" : 0.4,
 
-  "initial_velocity" : 1.0,
-  "s_trust_region" : 1.0,
+  "initial_velocity" : 5,
+  "s_trust_region" : 4.0,
 
-  "vx_zero": 0.3
+  "vx_zero": 1.5
 }

@@ -5,3 +5,4 @@ cdef extern from "MPCCWrapperClass.h":
         MPCCWrapperClass(string paramFile) except +
         double* calcMPC(double* state_meas)
         double* getPrediction(int idx)
+        double* getInterpolatedTrack(int idx)

@@ -19,10 +19,12 @@ class MPCCWrapperClass {
     private:
       MPC* mpc;
       std::array<OptVariables,N+1> mpc_horizon;
+      ArcLengthSpline track_;
     public:
       MPCCWrapperClass(std::string paramFile);
       ~MPCCWrapperClass();
 
       double* calcMPC(double* state_meas);
       double* getPrediction(int idx);
+      double* getInterpolatedTrack(int idx);
 };
