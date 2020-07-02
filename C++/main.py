@@ -62,11 +62,8 @@ for i in range(N_steps):
 
     # calculate MPC
     inputs = mpc.calcMPC(veh_state)
-    print('Solution to the MPC problem: ' + str(inputs))
-    print('')
-    print('')
-    DriveForce_kN = DriveForce_kN + 0.05*inputs[0]
-    SteeringAngle_rad = SteeringAngle_rad + 0.05*inputs[1]
+    DriveForce_kN = DriveForce_kN + 0.04*inputs[0]
+    SteeringAngle_rad = SteeringAngle_rad + 0.04*inputs[1]
 
     # apply inputs
     veh.set_DriveForce(DriveForce_kN*1000)
@@ -101,8 +98,8 @@ for i in range(N_steps):
 
     print('s_m predicted: {:6.2f} | sv_mps predicted: {:6.2f}'.format(s_guess, sv_guess))
 
-    # simulate 20ms
-    for j in range(25):
+    # simulate 40ms
+    for j in range(20):
         veh.step()
 
 # save results
